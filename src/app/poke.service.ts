@@ -9,4 +9,8 @@ import { Poke } from './poke';
 export class PokeService {
 
   constructor(private http : HttpClient) { }
+
+  getPokeStats(id : number) : Observable<Poke>{
+    return this.http.get<Poke>("https://pokeapi.co/api/v2/pokemon/"+id);
+  }
 }

@@ -23,7 +23,7 @@
 <div class="container-sm text-center mt-5">
   <div class="row">
     <div class="col fs-2 mb-5">
-      <span>{{poke_name}} </span><span style="color: gray">Nº {{poke_number_str}}</span>
+      <span>{{getName() | titlecase}} </span><span style="color: gray">Nº {{poke_number_str}}</span>
     </div>
   </div>
   <div class="row justify-content-evenly">
@@ -35,28 +35,15 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Altura</th>
+            <th scope="col">Peso</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
+            <td>{{getHeight()}}</td>
+            <td>{{getWeight}}</td>
           </tr>
         </tbody>
       </table>

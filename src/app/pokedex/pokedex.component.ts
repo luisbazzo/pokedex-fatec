@@ -1,11 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PokeService } from '../poke.service';
+import { Poke } from '../poke';
 
 @Component({
   selector: 'app-pokedex',
   templateUrl: './pokedex.component.html',
   styleUrls: ['./pokedex.component.css']
 })
-export class PokedexComponent {
+export class PokedexComponent implements OnInit{
+
+  ngOnInit(): void {
+    this.loadPoke();
+  }
+
   poke_number : number = 1;
   poke_number_str : string = "001";
   poke_name : string = "Bulbasaur";
@@ -17,6 +24,26 @@ export class PokedexComponent {
   poke_name_next : string = "Ivysaur";
 
   poke_img : string = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + this.poke_number_str + ".png";
+
+  constructor(private pokeService : PokeService) { }
+
+  loadPoke(){
+    this.pokeService.getPokeStats(this.poke_number).subscribe({
+      next : poke => this.poke = poke
+    });
+    }
+
+  poke : Poke = {} as Poke;
+
+  getName() : string {
+    return this.poke.name;
+  }
+  getHeight() : number {
+    return this.poke.height;
+  }
+  getWeight() : number {
+    return this.poke.weight;
+  }
 
   pokeNumberToString(){
     if(this.poke_number >= 10 && this.poke_number < 100){
@@ -64,6 +91,7 @@ export class PokedexComponent {
     }
 
     this.pokeNumberToString();
+    this.loadPoke();
     this.poke_img = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + this.poke_number_str + ".png";
   }
 
@@ -87,6 +115,7 @@ export class PokedexComponent {
     }
 
     this.pokeNumberToString();
+    this.loadPoke();
     this.poke_img = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + this.poke_number_str + ".png";
   }
 }

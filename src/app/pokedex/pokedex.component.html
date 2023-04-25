@@ -1,1 +1,66 @@
+<div class="container-xl text-center mt-5">
+  <div class="row justify-content-evenly">
+    <div class="col">
+      <button (click)="previousPoke()" style="background-color: rgb(216, 214, 214); width: 100%; height: 100%; font-size: 1.5em; border-radius: 10px;">
+        <div>
+          <ion-icon name="chevron-back-outline" style="color: black; background-color: rgb(167, 164, 164); border-radius: 10px;"></ion-icon>
+          <span class="ms-2">Nº {{poke_str_prev}}</span>
+          <span class="ms-2">{{poke_name_prev}}</span>
+        </div>
+      </button>
+    </div>
+    <div class="col">
+      <button (click)="nextPoke()" style="background-color: rgb(216, 214, 214); width: 100%; height: 100%; font-size: 1.5em; border-radius: 10px;">
+        <div>
+          <span class="me-2">Nº {{poke_str_next}}</span>
+          <span class="me-2">{{poke_name_next}}</span>
+          <ion-icon name="chevron-forward-outline" style="color: black; background-color: rgb(167, 164, 164); border-radius: 10px;"></ion-icon>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="container-sm text-center mt-5">
+  <div class="row">
+    <div class="col fs-2 mb-5">
+      <span>{{poke_name}} </span><span style="color: gray">Nº {{poke_number_str}}</span>
+    </div>
+  </div>
+  <div class="row justify-content-evenly">
+    <div class="col-4">
+      <img src="{{poke_img}}">
+    </div>
+    <div class="col-4">
+      <table class="table align-middle">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 

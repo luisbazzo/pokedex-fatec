@@ -11,6 +11,8 @@ export class PokedexComponent implements OnInit{
 
   ngOnInit(): void {
     this.loadPoke();
+    this.loadPrevPoke();
+    this.loadNextPoke();
   }
 
   poke_number : number = 1;
@@ -20,7 +22,6 @@ export class PokedexComponent implements OnInit{
   poke_str_prev : string = "1008";
   poke_str_next : string = "002";
 
-  poke_name_prev : string = "Miraidon";
   poke_name_next : string = "Ivysaur";
 
   poke_img : string = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + this.poke_number_str + ".png";
@@ -34,9 +35,29 @@ export class PokedexComponent implements OnInit{
     }
 
   poke : Poke = {} as Poke;
+  pokePrev : Poke = {} as Poke;
+  pokeNext : Poke = {} as Poke;
+
+  loadPrevPoke(){
+    this.pokeService.getPokeStats(parseInt(this.poke_str_prev)).subscribe({
+      next : poke => this.pokePrev = poke
+    });
+    }
+
+  loadNextPoke(){
+    this.pokeService.getPokeStats(parseInt(this.poke_str_next)).subscribe({
+      next : poke => this.pokeNext = poke
+    });
+    }
 
   getName() : string {
     return this.poke.name;
+  }
+  getPrevName() : string {
+    return this.pokePrev.name;
+  }
+  getNextName() : string{
+    return this.pokeNext.name;
   }
   getHeight() : number {
     return this.poke.height;
@@ -91,6 +112,8 @@ export class PokedexComponent implements OnInit{
     }
 
     this.pokeNumberToString();
+    this.loadPrevPoke();
+    this.loadNextPoke();
     this.loadPoke();
     this.poke_img = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + this.poke_number_str + ".png";
   }
@@ -115,6 +138,8 @@ export class PokedexComponent implements OnInit{
     }
 
     this.pokeNumberToString();
+    this.loadPrevPoke();
+    this.loadNextPoke();
     this.loadPoke();
     this.poke_img = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + this.poke_number_str + ".png";
   }

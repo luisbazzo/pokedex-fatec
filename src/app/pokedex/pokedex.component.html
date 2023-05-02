@@ -5,7 +5,7 @@
         <div>
           <ion-icon name="chevron-back-outline" style="color: black; background-color: rgb(167, 164, 164); border-radius: 10px;"></ion-icon>
           <span class="ms-2">Nº {{poke_str_prev}}</span>
-          <span class="ms-2">{{poke_name_prev}}</span>
+          <span class="ms-2">{{getPrevName() | titlecase}}</span>
         </div>
       </button>
     </div>
@@ -13,7 +13,7 @@
       <button (click)="nextPoke()" style="background-color: rgb(216, 214, 214); width: 100%; height: 100%; font-size: 1.5em; border-radius: 10px;">
         <div>
           <span class="me-2">Nº {{poke_str_next}}</span>
-          <span class="me-2">{{poke_name_next}}</span>
+          <span class="me-2">{{getNextName() | titlecase}}</span>
           <ion-icon name="chevron-forward-outline" style="color: black; background-color: rgb(167, 164, 164); border-radius: 10px;"></ion-icon>
         </div>
       </button>
@@ -34,16 +34,14 @@
       <table class="table align-middle">
         <thead>
           <tr>
-            <th scope="col">#</th>
             <th scope="col">Altura</th>
             <th scope="col">Peso</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th scope="row">1</th>
-            <td>{{getHeight()}}</td>
-            <td>{{getWeight}}</td>
+            <td scope="row">{{(getHeight())/10 + " m"}}</td>
+            <td>{{(getWeight())/10 + " kg"}}</td>
           </tr>
         </tbody>
       </table>

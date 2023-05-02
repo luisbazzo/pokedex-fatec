@@ -3,3 +3,4 @@ export interface Poke{
   height : number;
   weight : number;
 }
+
